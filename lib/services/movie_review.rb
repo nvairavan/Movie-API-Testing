@@ -1,6 +1,5 @@
 require 'httparty'
 require 'json'
-# require_relative '../Movie'
 require 'dotenv'
 
 Dotenv.load('.env')
