@@ -7,6 +7,5 @@ require 'dotenv'
 Dotenv.load('.env')
 
 RSpec.configure do |config|
-  config.color = true
   config.formatter = :documentation
 end
