@@ -39,15 +39,35 @@ describe 'Movie Review' do
       end
     end
 
+    # This test fails because two display title doesn't contain "Godfather" text. 
+    # Also those two display titlt doesn't have anything in commom. 
+    it 'should return the display_title with godfather' do
+      @movie.retrieve_all_display_title.each do |display_title|
+        expect(display_title).to include("Godfather")
+      end
+    end
+
     it 'should return the mpaa_rating as string' do
       @movie.retrieve_all_mpaa_rating.each do |mpaa_rating|
         expect(mpaa_rating).to be_kind_of(String)
       end
     end
 
+    it 'should return the mpaa_rating length between 0-5' do
+      @movie.retrieve_all_mpaa_rating.each do |mpaa_rating|
+        expect(mpaa_rating.length).to be_between(0,5)
+      end
+    end
+
     it 'should return the critics_pick as integer' do
       @movie.retrieve_all_critics_pick.each do |critics_pick|
         expect(critics_pick).to be_kind_of(Integer)
+      end
+    end
+
+    it 'should return the critics_pick either 0 or 1' do
+      @movie.retrieve_all_critics_pick.each do |critics_pick|
+        expect(critics_pick).to eq(0) | eq(1)
       end
     end
 
@@ -93,9 +113,27 @@ describe 'Movie Review' do
       end
     end
 
+    it 'should return the type as string' do
+      @movie.retrieve_all_type.each do |type|
+        expect(type).to be_kind_of(String)
+      end
+    end
+
+    it 'should return the type as ARTICLE' do
+      @movie.retrieve_all_type.each do |type|
+        expect(type).to include("article")
+      end
+    end
+
     it 'should return the url as string' do
       @movie.retrieve_all_url.each do |url|
         expect(url).to be_kind_of(String)
+      end
+    end
+
+    it 'should return the url starting with http' do
+      @movie.retrieve_all_url.each do |url|
+        expect(url).to start_with("http:")
       end
     end
 
@@ -105,12 +143,16 @@ describe 'Movie Review' do
       end
     end
 
+    it 'should return the suggested_link_text with "Read the New York Times" text in it' do
+      @movie.retrieve_all_suggested_link_text.each do |suggested_link_text|
+        expect(suggested_link_text).to include("Read the New York Times")
+      end
+    end
+
     it 'should return the multimedia as string' do
       @movie.retrieve_all_multimedia.each do |multimedia|
         expect(multimedia).to be(nil)
       end
     end
-
-
   end
 end
