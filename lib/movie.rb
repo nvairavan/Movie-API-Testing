@@ -1,4 +1,4 @@
-require 'json'
+# require 'json'
 require_relative './services/movie_review'
 
 class Movie
